@@ -23,4 +23,4 @@ def test_secret_route(env_var):
     response = app.test_client().get('/secret')
     res = json.loads(response.data.decode('utf-8'))
     assert response.status_code == 200
-    assert res == {"hello": "world"}
+    assert res == {"How are you?": "Fine, thanks"}

@@ -37,3 +37,16 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Deploy to Server
+      env:
+        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      if: job.status == 'success'
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: 'ls'
+        # script: 'cd /var/www/devlemmon.com && ./server_deploy.sh'
