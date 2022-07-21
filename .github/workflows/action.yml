@@ -45,5 +45,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: 'cd project/FlaskAuthAction && git pull && ./run_server.sh'
+        script: 'cd project/FlaskAuthAction/ && git pull && ./run_server.sh'
         # script: 'cd /var/www/devlemmon.com && ./server_deploy.sh'
