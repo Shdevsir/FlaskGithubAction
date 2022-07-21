@@ -38,7 +38,7 @@ jobs:
       run: |
         pytest
     - name: Deploy with rsync
-      run: rsync -avz ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/root/project/
+      run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/project/
     - name: Deploy to Server
       if: job.status == 'success'
       uses: appleboy/ssh-action@master
