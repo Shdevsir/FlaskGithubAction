@@ -45,4 +45,4 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: 'cd project/FlaskGithubAction/ && git pull && pip3 install -r requirements.txt && python3 app.py'
+        script: 'cd project/FlaskGithubAction/ && git pull && apt install python3-pip && pip3 install -r requirements.txt && python3 app.py'
