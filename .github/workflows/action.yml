@@ -43,7 +43,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: 'cd project/FlaskGithubAction/ && git pull &&
+        script: 'if cd FlaskGithubAction; then git pull; else git clone https://github.com/Shdevsir/FlaskGithubAction.git && git pull; fi
                  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - &&
                  apt-get install -y nodejs &&
                  sudo npm install pm2 -g &&
