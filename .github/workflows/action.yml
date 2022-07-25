@@ -50,5 +50,7 @@ jobs:
                  apt install python3-pip && pip3 install -r requirements.txt && 
                  export FLASK_HOST=${{ secrets.SSH_HOST }} &&
                  export FLASK_PORT=5000 &&
+                 export QUESTION=This_port${{ secrets.SSH_PORT }}? &&
+                 export ANSWER=Yes!
                  pm2 delete -s myapp || : &&
                  pm2 start --name=myapp "gunicorn --workers 4 --bind ${{ secrets.SSH_HOST }}:5000 wsgi:app"'
