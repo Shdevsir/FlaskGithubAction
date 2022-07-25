@@ -43,8 +43,11 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: 'cd project/FlaskGithubAction/ && git pull && 
-                 apt install python3-pip && pip3 install -r requirements.txt && 
-                 export FLASK_HOST=${{ secrets.SSH_HOST }} &&
-                 export FLASK_PORT=5000 &&
-                 gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app'
+        run: | 
+          cd project/FlaskGithubAction/
+          git pull
+          apt install python3-pip
+          pip3 install -r requirements.txt
+          export FLASK_HOST=${{ secrets.SSH_HOST }}
+          export FLASK_PORT=5000
+          gunicorn --workers 4 --bind ${{ secrets.SSH_HOST }}:5000 wsgi:app'
