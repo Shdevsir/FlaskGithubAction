@@ -52,4 +52,5 @@ jobs:
                  export FLASK_PORT=5000 &&
                  export QUESTION=1 &&
                  export ANSWER=1 &&
-                 gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app'
+                 pm2 delete -s myapp || : &&
+                 pm2 start --name=myapp "gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app"'
