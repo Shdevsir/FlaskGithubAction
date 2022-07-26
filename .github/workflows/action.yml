@@ -53,4 +53,4 @@ jobs:
                  export QUESTION=1 &&
                  export ANSWER=1 &&
                  pm2 delete -s myapp || : &&
-                 pm2 start --name=myapp "gunicorn --workers 4 --bind ${{ secrets.SSH_HOST }}:5000 wsgi:app"'
+                 pm2 start --name=myapp "gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app"'
